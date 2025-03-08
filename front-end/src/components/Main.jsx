@@ -1,7 +1,7 @@
-import React from "react";
 import ItemList from "./ItemList";
 import { artistArray } from "../assets/database/artists";
 import { songsArray } from "../assets/database/songs";
+import PropTypes from 'prop-types';
 
 const Main = ({ type }) => {
   return (
@@ -33,6 +33,10 @@ const Main = ({ type }) => {
       )}
     </div>
   );
+};
+
+Main.propTypes = {
+  type: PropTypes.string,
 };
 
 export default Main;

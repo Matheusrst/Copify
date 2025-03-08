@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCirclePlay,
@@ -7,7 +6,8 @@ import {
   faForwardStep,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 
 const formatTime = (timeInSeconds) => {
   const minutes = Math.floor(timeInSeconds / 60)
@@ -65,7 +65,7 @@ const Player = ({
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [isPlaying]);
+  }, [isPlaying, durationInSeconds]);
 
   // setIsPlaying(false)
 
@@ -100,6 +100,13 @@ const Player = ({
       <audio ref={audioPlayer} src={audio}></audio>
     </div>
   );
+};
+
+Player.propTypes = {
+  duration: PropTypes.string.isRequired,
+  randomIdFromArtist: PropTypes.string.isRequired,
+  randomId2FromArtist: PropTypes.string.isRequired,
+  audio: PropTypes.string.isRequired,
 };
 
 export default Player;

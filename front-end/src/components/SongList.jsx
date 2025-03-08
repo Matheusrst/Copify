@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from 'prop-types';
 import SongItem from "./SongItem";
 import { useState } from "react";
 
@@ -32,6 +32,10 @@ const SongList = ({ songsArray }) => {
       </p>
     </div>
   );
+};
+
+SongList.propTypes = {
+  songsArray: PropTypes.array.isRequired,
 };
 
 export default SongList;

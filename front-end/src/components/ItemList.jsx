@@ -1,12 +1,10 @@
-import React from "react";
 import SingleItem from "./SingleItem";
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const ItemList = ({ title, items, itemsArray, path, idPath }) => {
-  // console.log(items);
-  // console.log(useLocation());
+  console.log("Items Array:", itemsArray); // Log para verificar os dados recebidos
   const { pathname } = useLocation();
-  // console.log(pathname);
   const isHome = pathname === "/";
   const finalItems = isHome ? items : Infinity;
 
@@ -29,10 +27,6 @@ const ItemList = ({ title, items, itemsArray, path, idPath }) => {
           .filter((currentValue, index) => index < finalItems)
           .map((currObj, index) => (
             <SingleItem
-              // id={currObj.id}
-              // name={currObj.name}
-              // image={currObj.image}
-              // banner={currObj.banner}
               {...currObj}
               idPath={idPath}
               key={`${title}-${index}`}
@@ -41,6 +35,14 @@ const ItemList = ({ title, items, itemsArray, path, idPath }) => {
       </div>
     </div>
   );
+};
+
+ItemList.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.number.isRequired,
+  itemsArray: PropTypes.array.isRequired,
+  path: PropTypes.string.isRequired,
+  idPath: PropTypes.string.isRequired,
 };
 
 export default ItemList;

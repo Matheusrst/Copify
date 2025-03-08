@@ -1,9 +1,9 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-const SingleItem = ({ _id, name, image, banner, artist, idPath }) => {
+const SingleItem = ({ _id, name, image, artist, idPath }) => {
   return (
     <Link to={`${idPath}/${_id}`} className="single-item">
       <div className="single-item__div-image-button">
@@ -27,6 +27,14 @@ const SingleItem = ({ _id, name, image, banner, artist, idPath }) => {
       </div>
     </Link>
   );
+};
+
+SingleItem.propTypes = {
+  _id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  artist: PropTypes.string.isRequired,
+  idPath: PropTypes.string.isRequired,
 };
 
 export default SingleItem;
